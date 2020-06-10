@@ -12,6 +12,7 @@ import {
 import MyStuff from '../components/pages/MyStuff/MyStuff';
 import Home from '../components/pages/Home/Home';
 import NewItem from '../components/pages/NewItem/NewItem';
+import EditItem from '../components/pages/EditItem/EditItem';
 
 import './App.scss';
 
@@ -61,12 +62,13 @@ class App extends React.Component {
     <div className="App">
     <BrowserRouter>
       <React.Fragment>
-        <MyNavbar />
+        <MyNavbar authed={authed}/>
         <div className="container">
           <div className="row">
             <Switch>
               <PrivateRoute path='/home' component={Home} authed={authed} />
               <PrivateRoute path='/new' component={NewItem} authed={authed} />
+              <PrivateRoute path='/edit/:itemId' component={EditItem} authed={authed} />
               <PrivateRoute path='/stuff' component={MyStuff} authed={authed} />
               <PublicRoute path='/auth' component={Auth} authed={authed} />
               <Redirect from="*" to="/home"/>

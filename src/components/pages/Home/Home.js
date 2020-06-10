@@ -9,8 +9,6 @@ class Home extends React.Component {
     return (
       <div className="Home">
         <h1>Home</h1>
-        <Link to='/stuff/12345678'>View Stuff</Link>
-        <Link to='/new'>New Item</Link>
       </div>
     );
   }

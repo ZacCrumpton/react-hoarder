@@ -2,6 +2,8 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import { Button } from 'reactstrap';
+
 import './Auth.scss';
 
 class Auth extends React.Component {
@@ -14,9 +16,8 @@ class Auth extends React.Component {
   render() {
     return (
       <div className = "Auth">
-        <h1>Auth</h1>
-        <button className="btn btn-dark" onClick={this.loginClickEvent}>Google Login</button>
-      </div>
+        <Button className="btn btn-dark" size="lg" onClick={this.loginClickEvent}>Google Login</Button>
+        </div>
     );
   }
 }

@@ -11,7 +11,7 @@ class ItemCard extends React.Component {
 
   render() {
     const { item } = this.props;
-    const singleLink = `/items/${item.id}`;
+    const singleLink = `/single/${item.id}`;
     const editLink = `/edit/${item.id}`;
     return (
       <div className="ItemCard col-3">

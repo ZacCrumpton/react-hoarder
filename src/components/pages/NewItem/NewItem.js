@@ -1,5 +1,7 @@
 import React from 'react';
 import './NewItem.scss';
+import authData from '../../../helpers/data/authData';
+import itemData from '../../../helpers/data/itemData';
 
 class NewItem extends React.Component {
   state = {
@@ -18,9 +20,27 @@ class NewItem extends React.Component {
     this.setState({ itemImage: e.target.value });
   }
 
-  desciptionChange = (e) => {
+  descriptionChange = (e) => {
     e.preventDefault();
     this.setState({ itemDescription: e.target.value });
+  }
+
+  saveItem = (e) => {
+    e.preventDefault();
+    const {
+      itemName,
+      itemImage,
+      itemDescription,
+    } = this.state;
+    const newItem = {
+      itemName,
+      itemImage,
+      itemDescription,
+      uid: authData.getUid(),
+    };
+    itemData.postItem(newItem)
+      .then(() => this.props.history.push('/home'))
+      .catch((err) => console.error('unable to save item: ', err));
   }
 
   render() {
@@ -64,7 +84,7 @@ class NewItem extends React.Component {
               onChange={this.descriptionChange}
             />
           </div>
-          <button type="submit" className="btn btn-dark">Submit</button>
+          <button type="submit" className="btn btn-dark" onClick={this.saveItem}>Save Item</button>
           </form>
       </div>
     );
